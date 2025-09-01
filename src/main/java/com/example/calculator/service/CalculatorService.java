@@ -107,7 +107,7 @@ public class CalculatorService {
         }
         
         // 連続する演算子をチェック（ただし、負の数は許可）
-        if (expression.matches(".*[+*/]{2,}.*") || expression.matches(".*[+\\-*/]{2,}.*")) {
+        if (expression.matches(".*[+*/]{2,}.*") || expression.matches(".*[+\\-]{2,}.*")) {
             return false;
         }
         

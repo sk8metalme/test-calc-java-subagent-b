@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.calculator.service.CalculatorServiceTest" tests="30" skipped="0" failures="0" errors="0" timestamp="2025-09-01T06:04:49.528Z" hostname="arigatatsuyanoMacBook-Air.local" time="1.064">
+  <properties/>
+  <testcase name="括弧の不一致エラーテスト" classname="com.example.calculator.service.CalculatorServiceTest" time="0.028"/>
+  <testcase name="括弧を含む計算テスト" classname="com.example.calculator.service.CalculatorServiceTest" time="0.01"/>
+  <testcase name="基本的な加算テスト" classname="com.example.calculator.service.CalculatorServiceTest" time="0.003"/>
+  <testcase name="空の式エラーテスト" classname="com.example.calculator.service.CalculatorServiceTest" time="0.001"/>
+  <testcase name="null式エラーテスト" classname="com.example.calculator.service.CalculatorServiceTest" time="0.008"/>
+  <testcase name="[1] expression=1 + 1, expectedResult=2" classname="com.example.calculator.service.CalculatorServiceTest" time="0.143"/>
+  <testcase name="[2] expression=10 - 5, expectedResult=5" classname="com.example.calculator.service.CalculatorServiceTest" time="0.006"/>
+  <testcase name="[3] expression=3 * 4, expectedResult=12" classname="com.example.calculator.service.CalculatorServiceTest" time="0.006"/>
+  <testcase name="[4] expression=15 / 3, expectedResult=5" classname="com.example.calculator.service.CalculatorServiceTest" time="0.011"/>
+  <testcase name="[5] expression=2 + 3 * 4, expectedResult=14" classname="com.example.calculator.service.CalculatorServiceTest" time="0.005"/>
+  <testcase name="[6] expression=(2 + 3) * 4, expectedResult=20" classname="com.example.calculator.service.CalculatorServiceTest" time="0.005"/>
+  <testcase name="[7] expression=10 / 2 + 3, expectedResult=8" classname="com.example.calculator.service.CalculatorServiceTest" time="0.01"/>
+  <testcase name="[8] expression=2 * (3 + 4), expectedResult=14" classname="com.example.calculator.service.CalculatorServiceTest" time="0.007"/>
+  <testcase name="負の数値の計算テスト" classname="com.example.calculator.service.CalculatorServiceTest" time="0.003"/>
+  <testcase name="大きな数値の計算テスト" classname="com.example.calculator.service.CalculatorServiceTest" time="0.008"/>
+  <testcase name="複雑な計算テスト" classname="com.example.calculator.service.CalculatorServiceTest" time="0.004"/>
+  <testcase name="ゼロ除算エラーテスト" classname="com.example.calculator.service.CalculatorServiceTest" time="0.002"/>
+  <testcase name="基本的な除算テスト" classname="com.example.calculator.service.CalculatorServiceTest" time="0.01"/>
+  <testcase name="基本的な乗算テスト" classname="com.example.calculator.service.CalculatorServiceTest" time="0.004"/>
+  <testcase name="小数点を含む計算テスト" classname="com.example.calculator.service.CalculatorServiceTest" time="0.002"/>
+  <testcase name="小数点の精度テスト" classname="com.example.calculator.service.CalculatorServiceTest" time="0.005"/>
+  <testcase name="基本的な減算テスト" classname="com.example.calculator.service.CalculatorServiceTest" time="0.004"/>
+  <testcase name="[1] expression=abc" classname="com.example.calculator.service.CalculatorServiceTest" time="0.016"/>
+  <testcase name="[2] expression=2 + abc" classname="com.example.calculator.service.CalculatorServiceTest" time="0.004"/>
+  <testcase name="[3] expression=2 @ 3" classname="com.example.calculator.service.CalculatorServiceTest" time="0.01"/>
+  <testcase name="[4] expression=2 +" classname="com.example.calculator.service.CalculatorServiceTest" time="0.016"/>
+  <testcase name="[5] expression=+ 2" classname="com.example.calculator.service.CalculatorServiceTest" time="0.008"/>
+  <testcase name="[6] expression=2..3" classname="com.example.calculator.service.CalculatorServiceTest" time="0.005"/>
+  <testcase name="[7] expression=2 + 3 +" classname="com.example.calculator.service.CalculatorServiceTest" time="0.004"/>
+  <testcase name="無効な式エラーテスト" classname="com.example.calculator.service.CalculatorServiceTest" time="0.003"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>

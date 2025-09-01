@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="x-ua-compatible" content="IE=edge"/>
+<title>Test results - CalculatorControllerTest</title>
+<link href="../css/base-style.css" rel="stylesheet" type="text/css"/>
+<link href="../css/style.css" rel="stylesheet" type="text/css"/>
+<script src="../js/report.js" type="text/javascript"></script>
+</head>
+<body>
+<div id="content">
+<h1>CalculatorControllerTest</h1>
+<div class="breadcrumbs">
+<a href="../index.html">all</a> &gt; 
+<a href="../packages/com.example.calculator.controller.html">com.example.calculator.controller</a> &gt; CalculatorControllerTest</div>
+<div id="summary">
+<table>
+<tr>
+<td>
+<div class="summaryGroup">
+<table>
+<tr>
+<td>
+<div class="infoBox" id="tests">
+<div class="counter">8</div>
+<p>tests</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="failures">
+<div class="counter">0</div>
+<p>failures</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="ignored">
+<div class="counter">0</div>
+<p>ignored</p>
+</div>
+</td>
+<td>
+<div class="infoBox" id="duration">
+<div class="counter">16.128s</div>
+<p>duration</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</td>
+<td>
+<div class="infoBox success" id="successRate">
+<div class="percent">100%</div>
+<p>successful</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+<div class="tab-container">
+<ul class="tabLinks">
+<li>
+<a href="#">Tests</a>
+</li>
+<li>
+<a href="#">Standard output</a>
+</li>
+<li>
+<a href="#">Standard error</a>
+</li>
+</ul>
+<div class="tab">
+<h2>Tests</h2>
+<table>
+<thead>
+<tr>
+<th>Test</th>
+<th>Method name</th>
+<th>Duration</th>
+<th>Result</th>
+</tr>
+</thead>
+<tr>
+<td class="success">API計算エンドポイントのテスト</td>
+<td class="success">testCalculateApi()</td>
+<td class="success">0.054s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">API計算エンドポイント - エラーケース</td>
+<td class="success">testCalculateApiError()</td>
+<td class="success">0.685s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">電卓ページの表示テスト</td>
+<td class="success">testCalculatorPage()</td>
+<td class="success">12.518s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">履歴クリアのテスト</td>
+<td class="success">testClearHistory()</td>
+<td class="success">0.113s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">無効な計算リクエストのテスト</td>
+<td class="success">testInvalidCalculation()</td>
+<td class="success">0.143s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">無効なJSONリクエストのテスト</td>
+<td class="success">testInvalidJsonRequest()</td>
+<td class="success">1.327s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">正常な計算リクエストのテスト</td>
+<td class="success">testValidCalculation()</td>
+<td class="success">0.337s</td>
+<td class="success">passed</td>
+</tr>
+<tr>
+<td class="success">バリデーションエラーのテスト</td>
+<td class="success">testValidationError()</td>
+<td class="success">0.951s</td>
+<td class="success">passed</td>
+</tr>
+</table>
+</div>
+<div class="tab">
+<h2>Standard output</h2>
+<span class="code">
+<pre>15:03:31.454 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.calculator.controller.CalculatorControllerTest]: CalculatorControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:03:32.860 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.calculator.CalculatorApplication for test class com.example.calculator.controller.CalculatorControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-09-01T15:03:41.257+09:00  INFO 5005 --- [calculator] [    Test worker] c.e.c.c.CalculatorControllerTest         : Starting CalculatorControllerTest using Java 21.0.8 with PID 5005 (started by arigatatsuya in /Users/arigatatsuya/Work/git/test-calc-java-subagent-b)
+2025-09-01T15:03:41.280+09:00 DEBUG 5005 --- [calculator] [    Test worker] c.e.c.c.CalculatorControllerTest         : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-09-01T15:03:41.285+09:00  INFO 5005 --- [calculator] [    Test worker] c.e.c.c.CalculatorControllerTest         : No active profile set, falling back to 1 default profile: &quot;default&quot;
+2025-09-01T15:03:44.050+09:00 DEBUG 5005 --- [calculator] [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@1f758e4f
+2025-09-01T15:04:21.868+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 6 mappings in 'requestMappingHandlerMapping'
+2025-09-01T15:04:27.241+09:00 DEBUG 5005 --- [calculator] [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-09-01T15:04:27.884+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-09-01T15:04:28.876+09:00 DEBUG 5005 --- [calculator] [    Test worker] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-09-01T15:04:31.624+09:00  INFO 5005 --- [calculator] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-09-01T15:04:31.627+09:00  INFO 5005 --- [calculator] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-01T15:04:31.658+09:00  INFO 5005 --- [calculator] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 9 ms
+2025-09-01T15:04:32.855+09:00  INFO 5005 --- [calculator] [    Test worker] c.e.c.c.CalculatorControllerTest         : Started CalculatorControllerTest in 58.357 seconds (process running for 95.855)
+2025-09-01T15:04:35.101+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.calculator.controller.CalculatorController#calculator(Model)
+2025-09-01T15:04:35.443+09:00 DEBUG 5005 --- [calculator] [    Test worker] o.s.w.s.v.ContentNegotiatingViewResolver : Selected '*/*' given [*/*]
+2025-09-01T15:04:45.674+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.calculator.controller.CalculatorController#calculate(CalculationRequest, BindingResult, Model, List)
+2025-09-01T15:04:46.542+09:00 DEBUG 5005 --- [calculator] [    Test worker] o.s.w.s.v.ContentNegotiatingViewResolver : Selected '*/*' given [*/*]
+2025-09-01T15:04:46.693+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.calculator.controller.CalculatorController#calculate(CalculationRequest, BindingResult, Model, List)
+2025-09-01T15:04:46.703+09:00 DEBUG 5005 --- [calculator] [    Test worker] o.s.w.s.v.ContentNegotiatingViewResolver : Selected '*/*' given [*/*]
+2025-09-01T15:04:47.125+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.calculator.controller.CalculatorController#calculate(CalculationRequest, BindingResult, Model, List)
+2025-09-01T15:04:47.136+09:00 DEBUG 5005 --- [calculator] [    Test worker] o.s.w.s.v.ContentNegotiatingViewResolver : Selected '*/*' given [*/*]
+2025-09-01T15:04:47.331+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.calculator.controller.CalculatorController#calculateApi(CalculationRequest)
+2025-09-01T15:04:48.578+09:00 DEBUG 5005 --- [calculator] [    Test worker] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public com.example.calculator.model.CalculationResult com.example.calculator.controller.CalculatorController.calculateApi(com.example.calculator.model.CalculationRequest): JSON parse error: Unrecognized token 'invalid': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+2025-09-01T15:04:48.589+09:00  WARN 5005 --- [calculator] [    Test worker] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized token 'invalid': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')]
+2025-09-01T15:04:48.621+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.calculator.controller.CalculatorController#clearHistory(Model)
+2025-09-01T15:04:48.625+09:00 DEBUG 5005 --- [calculator] [    Test worker] o.s.w.s.v.ContentNegotiatingViewResolver : Selected '*/*' given [*/*]
+2025-09-01T15:04:48.821+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.calculator.controller.CalculatorController#calculateApi(CalculationRequest)
+2025-09-01T15:04:48.826+09:00 DEBUG 5005 --- [calculator] [    Test worker] m.m.a.RequestResponseBodyMethodProcessor : Read &quot;application/json;charset=UTF-8&quot; to [CalculationRequest{expression='2 + + 3'}]
+2025-09-01T15:04:48.859+09:00 DEBUG 5005 --- [calculator] [    Test worker] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-09-01T15:04:48.862+09:00 DEBUG 5005 --- [calculator] [    Test worker] m.m.a.RequestResponseBodyMethodProcessor : Writing [CalculationResult{expression='2 + + 3', result='null', success=false, errorMessage='無効な式です'}]
+2025-09-01T15:04:49.443+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.calculator.controller.CalculatorController#calculateApi(CalculationRequest)
+2025-09-01T15:04:49.445+09:00 DEBUG 5005 --- [calculator] [    Test worker] m.m.a.RequestResponseBodyMethodProcessor : Read &quot;application/json;charset=UTF-8&quot; to [CalculationRequest{expression='2 + 3'}]
+2025-09-01T15:04:49.452+09:00 DEBUG 5005 --- [calculator] [    Test worker] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-09-01T15:04:49.455+09:00 DEBUG 5005 --- [calculator] [    Test worker] m.m.a.RequestResponseBodyMethodProcessor : Writing [CalculationResult{expression='2 + 3', result='5', success=true, errorMessage='null'}]
+</pre>
+</span>
+</div>
+<div class="tab">
+<h2>Standard error</h2>
+<span class="code">
+<pre>WARNING: A Java agent has been loaded dynamically (/Users/arigatatsuya/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.10/90ed94ac044ea8953b224304c762316e91fd6b31/byte-buddy-agent-1.14.10.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+</pre>
+</span>
+</div>
+</div>
+<div id="footer">
+<p>
+<div>
+<label class="hidden" id="label-for-line-wrapping-toggle" for="line-wrapping-toggle">Wrap lines
+<input id="line-wrapping-toggle" type="checkbox" autocomplete="off"/>
+</label>
+</div>Generated by 
+<a href="https://www.gradle.org">Gradle 8.14.3</a> at 2025/09/01 15:05:07</p>
+</div>
+</div>
+</body>
+</html>
