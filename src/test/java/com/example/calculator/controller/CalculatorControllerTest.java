@@ -68,11 +68,12 @@ class CalculatorControllerTest {
     @Test
     @DisplayName("無効な計算リクエストのテスト")
     void testInvalidCalculation() throws Exception {
-        CalculationResult errorResult = new CalculationResult("invalid", "無効な式です", false);
-        when(calculatorService.calculate("invalid")).thenReturn(errorResult);
+        // バリデーションを通過するが、計算でエラーになる式を使用
+        CalculationResult errorResult = new CalculationResult("2 + + 3", "無効な式です", false);
+        when(calculatorService.calculate("2 + + 3")).thenReturn(errorResult);
         
         mockMvc.perform(post("/calculator/calculate")
-                .param("expression", "invalid"))
+                .param("expression", "2 + + 3"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("calculator"))
                 .andExpect(model().attributeExists("calculationRequest"))
@@ -110,16 +111,17 @@ class CalculatorControllerTest {
     @Test
     @DisplayName("API計算エンドポイント - エラーケース")
     void testCalculateApiError() throws Exception {
-        CalculationResult errorResult = new CalculationResult("invalid", "無効な式です", false);
-        when(calculatorService.calculate("invalid")).thenReturn(errorResult);
+        // バリデーションを通過するが、計算でエラーになる式を使用
+        CalculationResult errorResult = new CalculationResult("2 + + 3", "無効な式です", false);
+        when(calculatorService.calculate("2 + + 3")).thenReturn(errorResult);
         
-        CalculationRequest request = new CalculationRequest("invalid");
+        CalculationRequest request = new CalculationRequest("2 + + 3");
         
         mockMvc.perform(post("/calculator/api/calculate")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(objectMapper.writeValueAsString(request)))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$.expression").value("invalid"))
+                .andExpect(jsonPath("$.expression").value("2 + + 3"))
                 .andExpect(jsonPath("$.success").value(false))
                 .andExpect(jsonPath("$.errorMessage").value("無効な式です"));
     }
