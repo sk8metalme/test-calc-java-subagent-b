@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ja" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>電卓アプリ</title>
+    <link rel="stylesheet" th:href="@{/css/calculator.css}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>電卓アプリ</h1>
+            <p>Java21 + SpringBoot + Thymeleaf</p>
+        </header>
+        
+        <main>
+            <div class="calculator-container">
+                <div class="calculator">
+                    <!-- ディスプレイ -->
+                    <div class="display">
+                        <div class="expression" th:text="${calculationRequest != null ? calculationRequest.expression : ''}">0</div>
+                        <div class="result" th:text="${calculationResult != null ? calculationResult.result : ''}" th:class="${calculationResult != null and calculationResult.success ? 'success' : 'error'}"></div>
+                        <div class="error" th:if="${calculationResult != null and !calculationResult.success}" th:text="${calculationResult.errorMessage}"></div>
+                    </div>
+                    
+                    <!-- ボタンエリア -->
+                    <div class="buttons">
+                        <form th:action="@{/calculator/calculate}" method="post" th:object="${calculationRequest}">
+                            <div class="button-row">
+                                <button type="button" class="btn btn-clear" onclick="clearAll()">C</button>
+                                <button type="button" class="btn btn-operator" onclick="appendToExpression('(')">(</button>
+                                <button type="button" class="btn btn-operator" onclick="appendToExpression(')')">)</button>
+                                <button type="button" class="btn btn-operator" onclick="appendToExpression('/')">/</button>
+                            </div>
+                            
+                            <div class="button-row">
+                                <button type="button" class="btn btn-number" onclick="appendToExpression('7')">7</button>
+                                <button type="button" class="btn btn-number" onclick="appendToExpression('8')">8</button>
+                                <button type="button" class="btn btn-number" onclick="appendToExpression('9')">9</button>
+                                <button type="button" class="btn btn-operator" onclick="appendToExpression('*')">×</button>
+                            </div>
+                            
+                            <div class="button-row">
+                                <button type="button" class="btn btn-number" onclick="appendToExpression('4')">4</button>
+                                <button type="button" class="btn btn-number" onclick="appendToExpression('5')">5</button>
+                                <button type="button" class="btn btn-number" onclick="appendToExpression('6')">6</button>
+                                <button type="button" class="btn btn-operator" onclick="appendToExpression('-')">-</button>
+                            </div>
+                            
+                            <div class="button-row">
+                                <button type="button" class="btn btn-number" onclick="appendToExpression('1')">1</button>
+                                <button type="button" class="btn btn-number" onclick="appendToExpression('2')">2</button>
+                                <button type="button" class="btn btn-number" onclick="appendToExpression('3')">3</button>
+                                <button type="button" class="btn btn-operator" onclick="appendToExpression('+')">+</button>
+                            </div>
+                            
+                            <div class="button-row">
+                                <button type="button" class="btn btn-number btn-zero" onclick="appendToExpression('0')">0</button>
+                                <button type="button" class="btn btn-number" onclick="appendToExpression('.')">.</button>
+                                <button type="submit" class="btn btn-equals">=</button>
+                            </div>
+                            
+                            <input type="hidden" th:field="*{expression}" id="expressionInput">
+                        </form>
+                    </div>
+                </div>
+                
+                <!-- 履歴エリア -->
+                <div class="history" th:if="${history != null and !history.isEmpty()}">
+                    <h3>計算履歴</h3>
+                    <div class="history-list">
+                        <div class="history-item" th:each="item : ${history}">
+                            <div class="history-expression" th:text="${item.expression}"></div>
+                            <div class="history-result" th:text="${item.result}" th:class="${item.success ? 'success' : 'error'}"></div>
+                        </div>
+                    </div>
+                    <form th:action="@{/calculator/clear-history}" method="post">
+                        <button type="submit" class="btn btn-clear-history">履歴をクリア</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+        
+        <footer>
+            <p>&copy; 2024 電卓アプリ - Java21 + SpringBoot + Thymeleaf</p>
+        </footer>
+    </div>
+    
+    <script th:src="@{/js/calculator.js}"></script>
+</body>
+</html>
