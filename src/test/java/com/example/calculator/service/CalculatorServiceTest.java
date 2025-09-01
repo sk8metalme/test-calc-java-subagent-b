@@ -171,6 +171,30 @@ class CalculatorServiceTest {
         assertTrue(result.isSuccess());
         assertEquals("-3", result.getResult());
     }
+
+    @Test
+    @DisplayName("負の数の様々な計算テスト")
+    void testVariousNegativeNumberCalculations() {
+        // 負の数 + 正の数
+        CalculationResult result1 = calculatorService.calculate("-9+3");
+        assertTrue(result1.isSuccess());
+        assertEquals("-6", result1.getResult());
+        
+        // 負の数 - 正の数
+        CalculationResult result2 = calculatorService.calculate("-5-3");
+        assertTrue(result2.isSuccess());
+        assertEquals("-8", result2.getResult());
+        
+        // 正の数 * 負の数
+        CalculationResult result3 = calculatorService.calculate("2*-3");
+        assertTrue(result3.isSuccess());
+        assertEquals("-6", result3.getResult());
+        
+        // 括弧内の負の数
+        CalculationResult result4 = calculatorService.calculate("(-2+3)*4");
+        assertTrue(result4.isSuccess());
+        assertEquals("4", result4.getResult());
+    }
     
     @Test
     @DisplayName("小数点の精度テスト")
