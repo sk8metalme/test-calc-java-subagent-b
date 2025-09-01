@@ -137,6 +137,9 @@ public class CalculatorService {
         precedence.put('*', 2);
         precedence.put('/', 2);
         
+        // 負の数を正しく処理するため、式を前処理
+        infix = preprocessNegativeNumbers(infix);
+        
         for (int i = 0; i < infix.length(); i++) {
             char c = infix.charAt(i);
             
@@ -170,6 +173,53 @@ public class CalculatorService {
         }
         
         return result.toString().trim();
+    }
+    
+    /**
+     * 負の数を前処理する
+     * 例: "-9+3" -> "(0-9)+3"
+     */
+    private String preprocessNegativeNumbers(String expression) {
+        StringBuilder result = new StringBuilder();
+        
+        for (int i = 0; i < expression.length(); i++) {
+            char c = expression.charAt(i);
+            
+            if (c == '-') {
+                // 負の数の開始かどうかを判定
+                boolean isNegativeNumber = false;
+                
+                if (i == 0) {
+                    // 式の最初のマイナスは負の数
+                    isNegativeNumber = true;
+                } else {
+                    char prev = expression.charAt(i - 1);
+                    if (prev == '(' || prev == '+' || prev == '-' || prev == '*' || prev == '/') {
+                        // 演算子の後のマイナスは負の数
+                        isNegativeNumber = true;
+                    }
+                }
+                
+                if (isNegativeNumber) {
+                    // 負の数を "(0-数値)" の形式に変換
+                    result.append("(0-");
+                    i++; // 次の文字（数値）をスキップ
+                    while (i < expression.length() && (Character.isDigit(expression.charAt(i)) || expression.charAt(i) == '.')) {
+                        result.append(expression.charAt(i));
+                        i++;
+                    }
+                    result.append(")");
+                    i--; // ループでi++されるので1つ戻す
+                } else {
+                    // 通常の減算演算子
+                    result.append(c);
+                }
+            } else {
+                result.append(c);
+            }
+        }
+        
+        return result.toString();
     }
     
     /**
