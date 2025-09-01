@@ -1,0 +1,254 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="ja"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CalculatorService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">calculator</a> &gt; <a href="index.source.html" class="el_package">com.example.calculator.service</a> &gt; <span class="el_source">CalculatorService.java</span></div><h1>CalculatorService.java</h1><pre class="source lang-java linenums">package com.example.calculator.service;
+
+import com.example.calculator.model.CalculationResult;
+import org.springframework.stereotype.Service;
+
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.util.ArrayDeque;
+import java.util.Deque;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Stack;
+
+/**
+ * 電卓サービスクラス
+ * 四則演算と基本的な数式計算を提供
+ */
+@Service
+<span class="fc" id="L19">public class CalculatorService {</span>
+    
+    private static final int SCALE = 10; // 小数点以下の桁数
+<span class="fc" id="L22">    private static final RoundingMode ROUNDING_MODE = RoundingMode.HALF_UP;</span>
+    
+    /**
+     * 数式を計算する
+     * @param expression 計算式
+     * @return 計算結果
+     */
+    public CalculationResult calculate(String expression) {
+        try {
+<span class="fc bfc" id="L31" title="All 4 branches covered.">            if (expression == null || expression.trim().isEmpty()) {</span>
+<span class="fc" id="L32">                return new CalculationResult(expression, &quot;式が入力されていません&quot;, false);</span>
+            }
+            
+            // 式を正規化
+<span class="fc" id="L36">            String normalizedExpression = normalizeExpression(expression.trim());</span>
+            
+            // 式の妥当性をチェック
+<span class="fc bfc" id="L39" title="All 2 branches covered.">            if (!isValidExpression(normalizedExpression)) {</span>
+<span class="fc" id="L40">                return new CalculationResult(expression, &quot;無効な式です&quot;, false);</span>
+            }
+            
+            // 計算実行
+<span class="fc" id="L44">            BigDecimal result = evaluateExpression(normalizedExpression);</span>
+            
+            // 結果を文字列に変換
+<span class="fc" id="L47">            String resultString = formatResult(result);</span>
+            
+<span class="fc" id="L49">            return new CalculationResult(expression, resultString);</span>
+            
+<span class="fc" id="L51">        } catch (ArithmeticException e) {</span>
+<span class="fc" id="L52">            return new CalculationResult(expression, &quot;計算エラー: &quot; + e.getMessage(), false);</span>
+<span class="nc" id="L53">        } catch (Exception e) {</span>
+<span class="nc" id="L54">            return new CalculationResult(expression, &quot;予期しないエラーが発生しました&quot;, false);</span>
+        }
+    }
+    
+    /**
+     * 式を正規化する
+     */
+    private String normalizeExpression(String expression) {
+        // 空白を削除
+<span class="fc" id="L63">        expression = expression.replaceAll(&quot;\\s+&quot;, &quot;&quot;);</span>
+        
+        // 連続する演算子を処理
+<span class="fc" id="L66">        expression = expression.replaceAll(&quot;\\+\\+&quot;, &quot;+&quot;);</span>
+<span class="fc" id="L67">        expression = expression.replaceAll(&quot;--&quot;, &quot;+&quot;);</span>
+<span class="fc" id="L68">        expression = expression.replaceAll(&quot;\\+-&quot;, &quot;-&quot;);</span>
+<span class="fc" id="L69">        expression = expression.replaceAll(&quot;-\\+&quot;, &quot;-&quot;);</span>
+        
+<span class="fc" id="L71">        return expression;</span>
+    }
+    
+    /**
+     * 式の妥当性をチェック
+     */
+    private boolean isValidExpression(String expression) {
+<span class="pc bpc" id="L78" title="1 of 2 branches missed.">        if (expression.isEmpty()) {</span>
+<span class="nc" id="L79">            return false;</span>
+        }
+        
+        // 基本的な文字チェック
+<span class="fc bfc" id="L83" title="All 2 branches covered.">        if (!expression.matches(&quot;^[0-9+\\-*/.\\s()]+$&quot;)) {</span>
+<span class="fc" id="L84">            return false;</span>
+        }
+        
+        // 括弧の対応をチェック
+<span class="fc" id="L88">        int parenthesesCount = 0;</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">        for (char c : expression.toCharArray()) {</span>
+<span class="fc bfc" id="L90" title="All 2 branches covered.">            if (c == '(') {</span>
+<span class="fc" id="L91">                parenthesesCount++;</span>
+<span class="fc bfc" id="L92" title="All 2 branches covered.">            } else if (c == ')') {</span>
+<span class="fc" id="L93">                parenthesesCount--;</span>
+<span class="pc bpc" id="L94" title="1 of 2 branches missed.">                if (parenthesesCount &lt; 0) {</span>
+<span class="nc" id="L95">                    return false;</span>
+                }
+            }
+        }
+        
+<span class="fc bfc" id="L100" title="All 2 branches covered.">        if (parenthesesCount != 0) {</span>
+<span class="fc" id="L101">            return false;</span>
+        }
+        
+        // 演算子の位置をチェック
+<span class="fc bfc" id="L105" title="All 4 branches covered.">        if (expression.matches(&quot;.*[+\\-*/]$&quot;) || expression.matches(&quot;^[+*/].*&quot;)) {</span>
+<span class="fc" id="L106">            return false;</span>
+        }
+        
+        // 連続する演算子をチェック（ただし、負の数は許可）
+<span class="pc bpc" id="L110" title="2 of 4 branches missed.">        if (expression.matches(&quot;.*[+*/]{2,}.*&quot;) || expression.matches(&quot;.*[+\\-]{2,}.*&quot;)) {</span>
+<span class="nc" id="L111">            return false;</span>
+        }
+        
+<span class="fc" id="L114">        return true;</span>
+    }
+    
+    /**
+     * 数式を評価する（逆ポーランド記法を使用）
+     */
+    private BigDecimal evaluateExpression(String expression) {
+        // 中置記法を後置記法に変換
+<span class="fc" id="L122">        String postfix = infixToPostfix(expression);</span>
+        
+        // 後置記法を評価
+<span class="fc" id="L125">        return evaluatePostfix(postfix);</span>
+    }
+    
+    /**
+     * 中置記法を後置記法に変換
+     */
+    private String infixToPostfix(String infix) {
+<span class="fc" id="L132">        StringBuilder result = new StringBuilder();</span>
+<span class="fc" id="L133">        Stack&lt;Character&gt; stack = new Stack&lt;&gt;();</span>
+<span class="fc" id="L134">        Map&lt;Character, Integer&gt; precedence = new HashMap&lt;&gt;();</span>
+<span class="fc" id="L135">        precedence.put('+', 1);</span>
+<span class="fc" id="L136">        precedence.put('-', 1);</span>
+<span class="fc" id="L137">        precedence.put('*', 2);</span>
+<span class="fc" id="L138">        precedence.put('/', 2);</span>
+        
+<span class="fc bfc" id="L140" title="All 2 branches covered.">        for (int i = 0; i &lt; infix.length(); i++) {</span>
+<span class="fc" id="L141">            char c = infix.charAt(i);</span>
+            
+<span class="pc bpc" id="L143" title="1 of 4 branches missed.">            if (Character.isDigit(c) || c == '.') {</span>
+                // 数値を処理
+<span class="fc" id="L145">                StringBuilder number = new StringBuilder();</span>
+<span class="fc bfc" id="L146" title="All 6 branches covered.">                while (i &lt; infix.length() &amp;&amp; (Character.isDigit(infix.charAt(i)) || infix.charAt(i) == '.')) {</span>
+<span class="fc" id="L147">                    number.append(infix.charAt(i));</span>
+<span class="fc" id="L148">                    i++;</span>
+                }
+<span class="fc" id="L150">                i--; // ループでi++されるので1つ戻す</span>
+<span class="fc" id="L151">                result.append(number).append(&quot; &quot;);</span>
+<span class="fc bfc" id="L152" title="All 2 branches covered.">            } else if (c == '(') {</span>
+<span class="fc" id="L153">                stack.push(c);</span>
+<span class="fc bfc" id="L154" title="All 2 branches covered.">            } else if (c == ')') {</span>
+<span class="pc bpc" id="L155" title="1 of 4 branches missed.">                while (!stack.isEmpty() &amp;&amp; stack.peek() != '(') {</span>
+<span class="fc" id="L156">                    result.append(stack.pop()).append(&quot; &quot;);</span>
+                }
+<span class="fc" id="L158">                stack.pop(); // '('を削除</span>
+<span class="pc bpc" id="L159" title="1 of 2 branches missed.">            } else if (precedence.containsKey(c)) {</span>
+<span class="fc bfc" id="L160" title="All 4 branches covered.">                while (!stack.isEmpty() &amp;&amp; stack.peek() != '(' &amp;&amp; </span>
+<span class="fc bfc" id="L161" title="All 2 branches covered.">                       precedence.get(stack.peek()) &gt;= precedence.get(c)) {</span>
+<span class="fc" id="L162">                    result.append(stack.pop()).append(&quot; &quot;);</span>
+                }
+<span class="fc" id="L164">                stack.push(c);</span>
+            }
+        }
+        
+<span class="fc bfc" id="L168" title="All 2 branches covered.">        while (!stack.isEmpty()) {</span>
+<span class="fc" id="L169">            result.append(stack.pop()).append(&quot; &quot;);</span>
+        }
+        
+<span class="fc" id="L172">        return result.toString().trim();</span>
+    }
+    
+    /**
+     * 後置記法を評価
+     */
+    private BigDecimal evaluatePostfix(String postfix) {
+<span class="fc" id="L179">        Stack&lt;BigDecimal&gt; stack = new Stack&lt;&gt;();</span>
+<span class="fc" id="L180">        String[] tokens = postfix.split(&quot;\\s+&quot;);</span>
+        
+<span class="fc bfc" id="L182" title="All 2 branches covered.">        for (String token : tokens) {</span>
+<span class="fc bfc" id="L183" title="All 2 branches covered.">            if (isNumber(token)) {</span>
+<span class="fc" id="L184">                stack.push(new BigDecimal(token));</span>
+<span class="fc bfc" id="L185" title="All 2 branches covered.">            } else if (isOperator(token)) {</span>
+<span class="pc bpc" id="L186" title="1 of 2 branches missed.">                if (stack.size() &lt; 2) {</span>
+<span class="nc" id="L187">                    throw new ArithmeticException(&quot;演算子に対して十分な数値がありません&quot;);</span>
+                }
+                
+<span class="fc" id="L190">                BigDecimal b = stack.pop();</span>
+<span class="fc" id="L191">                BigDecimal a = stack.pop();</span>
+<span class="fc" id="L192">                BigDecimal result = performOperation(a, b, token);</span>
+<span class="fc" id="L193">                stack.push(result);</span>
+            }
+        }
+        
+<span class="fc bfc" id="L197" title="All 2 branches covered.">        if (stack.size() != 1) {</span>
+<span class="fc" id="L198">            throw new ArithmeticException(&quot;計算結果が不正です&quot;);</span>
+        }
+        
+<span class="fc" id="L201">        return stack.pop();</span>
+    }
+    
+    /**
+     * 数値かどうかを判定
+     */
+    private boolean isNumber(String token) {
+        try {
+<span class="fc" id="L209">            new BigDecimal(token);</span>
+<span class="fc" id="L210">            return true;</span>
+<span class="fc" id="L211">        } catch (NumberFormatException e) {</span>
+<span class="fc" id="L212">            return false;</span>
+        }
+    }
+    
+    /**
+     * 演算子かどうかを判定
+     */
+    private boolean isOperator(String token) {
+<span class="fc bfc" id="L220" title="All 8 branches covered.">        return token.equals(&quot;+&quot;) || token.equals(&quot;-&quot;) || token.equals(&quot;*&quot;) || token.equals(&quot;/&quot;);</span>
+    }
+    
+    /**
+     * 演算を実行
+     */
+    private BigDecimal performOperation(BigDecimal a, BigDecimal b, String operator) {
+<span class="pc bpc" id="L227" title="1 of 5 branches missed.">        return switch (operator) {</span>
+<span class="fc" id="L228">            case &quot;+&quot; -&gt; a.add(b);</span>
+<span class="fc" id="L229">            case &quot;-&quot; -&gt; a.subtract(b);</span>
+<span class="fc" id="L230">            case &quot;*&quot; -&gt; a.multiply(b);</span>
+            case &quot;/&quot; -&gt; {
+<span class="fc bfc" id="L232" title="All 2 branches covered.">                if (b.compareTo(BigDecimal.ZERO) == 0) {</span>
+<span class="fc" id="L233">                    throw new ArithmeticException(&quot;ゼロ除算はできません&quot;);</span>
+                }
+<span class="fc" id="L235">                yield a.divide(b, SCALE, ROUNDING_MODE);</span>
+            }
+<span class="nc" id="L237">            default -&gt; throw new ArithmeticException(&quot;未対応の演算子: &quot; + operator);</span>
+        };
+    }
+    
+    /**
+     * 結果をフォーマット
+     */
+    private String formatResult(BigDecimal result) {
+        // 小数点以下が0の場合は整数として表示
+<span class="fc bfc" id="L246" title="All 4 branches covered.">        if (result.scale() &lt;= 0 || result.stripTrailingZeros().scale() &lt;= 0) {</span>
+<span class="fc" id="L247">            return result.setScale(0, ROUNDING_MODE).toString();</span>
+        }
+        
+        // 小数点以下を適切な桁数に調整
+<span class="fc" id="L251">        return result.stripTrailingZeros().toPlainString();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.11.202310140853</span></div></body></html>

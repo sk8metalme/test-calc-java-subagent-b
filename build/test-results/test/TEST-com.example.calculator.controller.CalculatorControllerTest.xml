@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.calculator.controller.CalculatorControllerTest" tests="8" skipped="0" failures="0" errors="0" timestamp="2025-09-01T06:04:33.132Z" hostname="arigatatsuyanoMacBook-Air.local" time="16.342">
+  <properties/>
+  <testcase name="電卓ページの表示テスト" classname="com.example.calculator.controller.CalculatorControllerTest" time="12.518"/>
+  <testcase name="バリデーションエラーのテスト" classname="com.example.calculator.controller.CalculatorControllerTest" time="0.951"/>
+  <testcase name="正常な計算リクエストのテスト" classname="com.example.calculator.controller.CalculatorControllerTest" time="0.337"/>
+  <testcase name="無効な計算リクエストのテスト" classname="com.example.calculator.controller.CalculatorControllerTest" time="0.143"/>
+  <testcase name="無効なJSONリクエストのテスト" classname="com.example.calculator.controller.CalculatorControllerTest" time="1.327"/>
+  <testcase name="履歴クリアのテスト" classname="com.example.calculator.controller.CalculatorControllerTest" time="0.113"/>
+  <testcase name="API計算エンドポイント - エラーケース" classname="com.example.calculator.controller.CalculatorControllerTest" time="0.685"/>
+  <testcase name="API計算エンドポイントのテスト" classname="com.example.calculator.controller.CalculatorControllerTest" time="0.054"/>
+  <system-out><![CDATA[15:03:31.454 [Test worker] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [com.example.calculator.controller.CalculatorControllerTest]: CalculatorControllerTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+15:03:32.860 [Test worker] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration com.example.calculator.CalculatorApplication for test class com.example.calculator.controller.CalculatorControllerTest
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-09-01T15:03:41.257+09:00  INFO 5005 --- [calculator] [    Test worker] c.e.c.c.CalculatorControllerTest         : Starting CalculatorControllerTest using Java 21.0.8 with PID 5005 (started by arigatatsuya in /Users/arigatatsuya/Work/git/test-calc-java-subagent-b)
+2025-09-01T15:03:41.280+09:00 DEBUG 5005 --- [calculator] [    Test worker] c.e.c.c.CalculatorControllerTest         : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-09-01T15:03:41.285+09:00  INFO 5005 --- [calculator] [    Test worker] c.e.c.c.CalculatorControllerTest         : No active profile set, falling back to 1 default profile: "default"
+2025-09-01T15:03:44.050+09:00 DEBUG 5005 --- [calculator] [    Test worker] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@1f758e4f
+2025-09-01T15:04:21.868+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : 6 mappings in 'requestMappingHandlerMapping'
+2025-09-01T15:04:27.241+09:00 DEBUG 5005 --- [calculator] [    Test worker] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2025-09-01T15:04:27.884+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2025-09-01T15:04:28.876+09:00 DEBUG 5005 --- [calculator] [    Test worker] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2025-09-01T15:04:31.624+09:00  INFO 5005 --- [calculator] [    Test worker] o.s.b.t.m.w.SpringBootMockServletContext : Initializing Spring TestDispatcherServlet ''
+2025-09-01T15:04:31.627+09:00  INFO 5005 --- [calculator] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Initializing Servlet ''
+2025-09-01T15:04:31.658+09:00  INFO 5005 --- [calculator] [    Test worker] o.s.t.web.servlet.TestDispatcherServlet  : Completed initialization in 9 ms
+2025-09-01T15:04:32.855+09:00  INFO 5005 --- [calculator] [    Test worker] c.e.c.c.CalculatorControllerTest         : Started CalculatorControllerTest in 58.357 seconds (process running for 95.855)
+2025-09-01T15:04:35.101+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.calculator.controller.CalculatorController#calculator(Model)
+2025-09-01T15:04:35.443+09:00 DEBUG 5005 --- [calculator] [    Test worker] o.s.w.s.v.ContentNegotiatingViewResolver : Selected '*/*' given [*/*]
+2025-09-01T15:04:45.674+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.calculator.controller.CalculatorController#calculate(CalculationRequest, BindingResult, Model, List)
+2025-09-01T15:04:46.542+09:00 DEBUG 5005 --- [calculator] [    Test worker] o.s.w.s.v.ContentNegotiatingViewResolver : Selected '*/*' given [*/*]
+2025-09-01T15:04:46.693+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.calculator.controller.CalculatorController#calculate(CalculationRequest, BindingResult, Model, List)
+2025-09-01T15:04:46.703+09:00 DEBUG 5005 --- [calculator] [    Test worker] o.s.w.s.v.ContentNegotiatingViewResolver : Selected '*/*' given [*/*]
+2025-09-01T15:04:47.125+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.calculator.controller.CalculatorController#calculate(CalculationRequest, BindingResult, Model, List)
+2025-09-01T15:04:47.136+09:00 DEBUG 5005 --- [calculator] [    Test worker] o.s.w.s.v.ContentNegotiatingViewResolver : Selected '*/*' given [*/*]
+2025-09-01T15:04:47.331+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.calculator.controller.CalculatorController#calculateApi(CalculationRequest)
+2025-09-01T15:04:48.578+09:00 DEBUG 5005 --- [calculator] [    Test worker] o.s.web.method.HandlerMethod             : Could not resolve parameter [0] in public com.example.calculator.model.CalculationResult com.example.calculator.controller.CalculatorController.calculateApi(com.example.calculator.model.CalculationRequest): JSON parse error: Unrecognized token 'invalid': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')
+2025-09-01T15:04:48.589+09:00  WARN 5005 --- [calculator] [    Test worker] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Unrecognized token 'invalid': was expecting (JSON String, Number, Array, Object or token 'null', 'true' or 'false')]
+2025-09-01T15:04:48.621+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.calculator.controller.CalculatorController#clearHistory(Model)
+2025-09-01T15:04:48.625+09:00 DEBUG 5005 --- [calculator] [    Test worker] o.s.w.s.v.ContentNegotiatingViewResolver : Selected '*/*' given [*/*]
+2025-09-01T15:04:48.821+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.calculator.controller.CalculatorController#calculateApi(CalculationRequest)
+2025-09-01T15:04:48.826+09:00 DEBUG 5005 --- [calculator] [    Test worker] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [CalculationRequest{expression='2 + + 3'}]
+2025-09-01T15:04:48.859+09:00 DEBUG 5005 --- [calculator] [    Test worker] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-09-01T15:04:48.862+09:00 DEBUG 5005 --- [calculator] [    Test worker] m.m.a.RequestResponseBodyMethodProcessor : Writing [CalculationResult{expression='2 + + 3', result='null', success=false, errorMessage='無効な式です'}]
+2025-09-01T15:04:49.443+09:00 DEBUG 5005 --- [calculator] [    Test worker] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped to com.example.calculator.controller.CalculatorController#calculateApi(CalculationRequest)
+2025-09-01T15:04:49.445+09:00 DEBUG 5005 --- [calculator] [    Test worker] m.m.a.RequestResponseBodyMethodProcessor : Read "application/json;charset=UTF-8" to [CalculationRequest{expression='2 + 3'}]
+2025-09-01T15:04:49.452+09:00 DEBUG 5005 --- [calculator] [    Test worker] m.m.a.RequestResponseBodyMethodProcessor : Using 'application/json', given [*/*] and supported [application/json, application/*+json]
+2025-09-01T15:04:49.455+09:00 DEBUG 5005 --- [calculator] [    Test worker] m.m.a.RequestResponseBodyMethodProcessor : Writing [CalculationResult{expression='2 + 3', result='5', success=true, errorMessage='null'}]
+]]></system-out>
+  <system-err><![CDATA[WARNING: A Java agent has been loaded dynamically (/Users/arigatatsuya/.gradle/caches/modules-2/files-2.1/net.bytebuddy/byte-buddy-agent/1.14.10/90ed94ac044ea8953b224304c762316e91fd6b31/byte-buddy-agent-1.14.10.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+]]></system-err>
+</testsuite>

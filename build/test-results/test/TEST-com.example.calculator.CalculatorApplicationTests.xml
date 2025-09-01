@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="com.example.calculator.CalculatorApplicationTests" tests="1" skipped="0" failures="0" errors="0" timestamp="2025-09-01T06:05:05.136Z" hostname="arigatatsuyanoMacBook-Air.local" time="0.016">
+  <properties/>
+  <testcase name="contextLoads()" classname="com.example.calculator.CalculatorApplicationTests" time="0.016"/>
+  <system-out><![CDATA[2025-09-01T15:04:50.627+09:00  INFO 5005 --- [calculator] [    Test worker] t.c.s.AnnotationConfigContextLoaderUtils : Could not detect default configuration classes for test class [com.example.calculator.CalculatorApplicationTests]: CalculatorApplicationTests does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+2025-09-01T15:04:50.694+09:00  INFO 5005 --- [calculator] [    Test worker] .b.t.c.SpringBootTestContextBootstrapper : Found @SpringBootConfiguration com.example.calculator.CalculatorApplication for test class com.example.calculator.CalculatorApplicationTests
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.0)
+
+2025-09-01T15:04:50.971+09:00  INFO 5005 --- [calculator] [    Test worker] c.e.c.CalculatorApplicationTests         : Starting CalculatorApplicationTests using Java 21.0.8 with PID 5005 (started by arigatatsuya in /Users/arigatatsuya/Work/git/test-calc-java-subagent-b)
+2025-09-01T15:04:50.971+09:00 DEBUG 5005 --- [calculator] [    Test worker] c.e.c.CalculatorApplicationTests         : Running with Spring Boot v3.2.0, Spring v6.1.1
+2025-09-01T15:04:50.973+09:00  INFO 5005 --- [calculator] [    Test worker] c.e.c.CalculatorApplicationTests         : The following 1 profile is active: "test"
+2025-09-01T15:05:03.977+09:00  INFO 5005 --- [calculator] [    Test worker] o.s.b.a.e.web.EndpointLinksResolver      : Exposing 3 endpoint(s) beneath base path '/actuator'
+2025-09-01T15:05:04.494+09:00  INFO 5005 --- [calculator] [    Test worker] c.e.c.CalculatorApplicationTests         : Started CalculatorApplicationTests in 13.715 seconds (process running for 127.493)
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
